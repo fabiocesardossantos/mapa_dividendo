@@ -28,16 +28,16 @@ def Dividendos():
     
     
     div1 = div1.rename(columns={0:'Empresas',1:'Dividendos'})
-
+    div2 =  div1.reindex(index=div1.index[::-1])
     col1, col2 =st.columns([1,2])
 
     with col1:
         st.subheader('Dividendos')
-        st.write(div1)
+        st.write(div2)
     with col2:
         st.subheader('demostrativos dos Dividendos')   
         fig, ax = plt.subplots()
-        ax.bar(div1['Empresas'], div1['Dividendos'])
+        ax.bar(div2['Empresas'], div2['Dividendos'])
         ax.set_xlabel('Empresas')
         ax.set_ylabel('Dividendos')
         st.pyplot(fig)
